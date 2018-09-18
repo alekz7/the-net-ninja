@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import TodoComponent from './components/TodoComponent'
+
+var myCheese = {name: 'panela', smellFactor: 'strong', price: '3.50'}
 
 class App extends Component {
   render() {
@@ -8,8 +11,8 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">The Net Ninja series youtube...</h1>
         </header>
+        <TodoComponent mssg="I like cheese" data={myCheese}/>
       </div>
     );
   }
