@@ -1,5 +1,7 @@
 import React from 'react';
+import './TodoComponent.css';
 import TodoItem from './TodoItem';
+import AddItem from './AddItem';
 
 class TodoComponent extends React.Component {
 
@@ -16,6 +18,14 @@ class TodoComponent extends React.Component {
     var updatedTodos = this.state.todos.filter(function(val,idx){
       return item !== val;
     });
+    this.setState({
+      todos: updatedTodos,
+    })
+  }
+
+  onAdd = (item) => {
+    var updatedTodos = this.state.todos;
+    updatedTodos.push(item);
     this.setState({
       todos: updatedTodos,
     })
@@ -44,15 +54,14 @@ class TodoComponent extends React.Component {
       <p> <strong>Queso: </strong> {this.props.data.name} </p>
       <p> <strong>Olor:  </strong> {this.props.data.smellFactor} </p>
       <p> <strong>Precio:</strong>  {this.props.data.price} </p>
-      <div id="todo-lista">
+      <AddItem onAdd={this.onAdd}/>
+      <div id="todo-list">
         <p onClick={this.handleClick}>Recuerdame hacer estas cosas:</p>
         <ul>
         {localTodos}
         </ul>
         <ul>
           <li><strong>{this.state.todos[0]}</strong></li>
-          <li><strong>{this.state.todos[1]}</strong></li>
-          <li><strong>{this.state.todos[2]}</strong></li>
         </ul>
         <ul>
         {localTodoItem}
